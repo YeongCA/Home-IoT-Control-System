@@ -34,7 +34,7 @@ function geolocation_converter()
 
 function getWeather(location, locationStr) {
 
-    var apikey = "ddacff9b437e91ddfc12e9d4dc88c73c";    //Open weathermap API licence 정보
+    var apikey = "ddacff9b437e********e9d4dc88c73c";    //Open weathermap API licence 정보(라이센스 키 일부 블라인드 처리)
     var city = location; //지명주소 정보(시단위)
     // JSON 요청 URL
     var apiURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apikey;         
