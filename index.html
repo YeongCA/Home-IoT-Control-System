@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Smart Displat iMirror Flatform</title>
+
+    <!-- 자바스크림트 파일 불러오기(improt start) -->
+    <!--Jquery 라이브러리 사용 -->
+    <script type="text/javascript" src="javascript\js_lib\jquery-3.4.1.min.js"></script>
+    <!-- 크로스 도메인 보안정책 차단 해제 플러그인 로드 -->
+    <script type="text/javascript" src="javascript\js_lib\jquery.ajax-cross-origin.min.js"></script>
+    <!-- Daum kakao map API -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5905bbe467016357247a6d175bf16a26&libraries=services"></script>
+    <!-- MQTT API 사용-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+
+    <!-- 실내 대기환경 정보 처리 javascript파일(순서 고정) -->
+    <script type="text/javascript" src="javascript\CtrlPan\Inner_air_info.js"></script>
+
+    <!-- 음성인식 API사용 -->
+    <script src="javascript\js_lib\Annyang_API.js"></script>
+
+
+
+    <!--CSS 파일 로딩 시작 -->
+   
+    <!-- 메인 플랫폼 CSS로딩 -->
+    <link rel="stylesheet" type="text/css" href="css\main\main.css" />
+
+    <!--시간위젯 CSS로딩 -->
+    <link rel="stylesheet" type="text/css" href="css\timestamp\Timestamp_s.css" />
+
+    <!-- 날씨 위젯 CSS로딩 -->
+    <link rel="stylesheet" type="text/css" href="css\weather\weather_svc.css" />
+
+    <!-- IOT제어패널 CSS로딩-->
+
+    <link rel="stylesheet" type="text/css" href="css\ctrl_pan\style.css" />
+    <!-- CSS로딩 끝-->
+
+</head>
+
+
+<!--body 영역 : 배경색-검정/ 시스템 점검 running -->
+<body style="background-color:rgb(0, 0, 0);width:1270px;height:818px;">
+    <!-- 플랫폼 소프트웨어 디스플레이 영역-->
+    <div style="width:1270px;height:818px">
+        <div id="clock_Date" class="ClkDate"></div>
+        <!-- 좌측 위젯 영역 -->
+        <div class="WidgetArea">
+
+            <!-- 시간 위젯 영역 -->
+
+            <div class="WtrLocationArea">
+
+                <div class="WtrLocationIcon">
+                    <img src="gps_icon.png" style="width:40px;height:50px;">
+                </div>
+
+                <div id="place" class="WtrLocation"></div>
+
+            </div><div class="ClkTime">
+                <div id="clock_time" class="ClkHhMm"></div>
+                <div id="am_pm" class="ClkAmPm"></div>
+            </div>
+
+            <div class="BlankArea"></div>            <!-- 빈 영역 -->
+
+
+            <div class="WtrWdgtArea">
+                <!--날씨 위젯 영역 -->
+
+
+                <div class="WtrDivLine1"></div>           <!-- 구분선 -->
+                <div class="WtrStateArea">
+                    <div class="WtrCurIcon">
+                        <img id="iconimg" style="width:200px; height:130px;" src="clear_night.png">
+                    </div><div id="currentTemp" class="WtrCurrentTemp"></div>
+
+                </div>
+                <div class="WtrDivLine2"></div>
+                <div class="WtrWndHmArea">
+                    <div class="WtrHmArea">
+                        <div class="WtrHmIcon">
+                            <img style="width:40px;height:50px;" id="humidity_icon" src="humidity_icon.png">
+                        </div>
+                        <div id="humidity_property" class="WtrHmData"></div>
+                    </div>
+                    <div class="WtrWndArea">
+                        <div class="WtrWndIcon">
+                            <img style="width:60px;height:50px;" id="wind_icon" src="wind.png">
+                        </div>
+                        <div id="wind_spd" class="WtrWndspd"></div>
+                        <div class="bar">|</div>
+                        <div id="wind_dict" class="WtrWndict"></div>
+                    </div>
+
+                </div><!-- 구분선 -->
+                <div style="width: 330px;height:300px;padding-left:10px;">
+
+                </div>
+            </div>
+        </div>
+
+        <!--우측 위젯 영역(IOT제어)-->
+        <div style="width:750px;height:720px;float:right;padding-top: 40px; padding-left:5px;padding-right:5px;padding-bottom:5px;">
+            <!-- 실내 대기 환경 정보 관련 영역 -->
+            <div class="inAir_Quality_Pannel_Outline">
+                <div class="inAir_Quality_Pannel_Frame">
+                    <div class="inAir_Pannel_Title">실내 환경</div>
+                    <div style="width:300px;height: 73px;padding-top: 10px;">
+                        <div class="inner_Title">
+                            <div class="infactor">온도</div>
+                            <div class="infactor">습도</div>
+                            <div class="infactor">미세먼지</div>
+                            <div class="infactor">초미세먼지</div>
+                        </div>
+
+                        <div style="width:720px;height:40px;padding-left:30px;">
+                            <div class="inner_TempHumi_Block">
+                                <div class="intmphumival" id="SM/Temper">--</div>
+                                <div class="intmphumival" id="SM/Humi">--</div>
+                            </div>
+                            <div class="inner_Air_val_Area">
+                                <div id="SM/PM10" class="pm10_valueClr" style="color: rgb(0, 165, 0);">--</div>
+                                <div id="SM/PM2" class="pm25_valueClr" style="color: rgb(0, 165, 0);">--</div>
+                            </div>
+                        </div>
+                        <div style="width:360px;height:233px;padding-left:30px;float:left;padding-top: 15px;">
+                            <div style="width:180px;height:233px;float:left">
+                                <div class="intemp_meter"></div>
+                            </div>
+                            <div class="inhumi_meter">
+                                <img style="width:160px;height:200px;z-index: -3;" src="cupline.png">
+                                <div style="width:160px;height: 200px;float:left;position: relative;bottom: 206px;background-color: #000000;z-index:-2;">
+                                    <img style="width: 160px;height: 200px;" src="cup.png">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="inner_Air_pinArea">
+                        <div class="inner_Air_MeasurementPin_pm10">
+                            <img style="width:110px;height:57px;padding-left: 20px;padding-top: 10px;" src="measuremeter.png">
+                            <img src="measuremeter_pin.png" class="pm10_pinpointer">
+                        </div>
+                        <div class="inner_Air_MeasurementPin_pm25">
+                            <img style="width:110px;height:57px;padding-left: 20px;padding-top: 10px;" src="measuremeter.png">
+                            <img src="measuremeter_pin.png" class="pm25_pinpointer">
+                        </div>
+                        <div style="width:360px;height:120px;float:right;">
+                            <div id="PM10_description" class="pm10_descriptClr">--</div>
+                            <div id="PM25_description" class="pm25_descriptClr">--</div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+            <!-- 전등 제어 관련 영역 -->
+            <div class="inner_light_Outline">
+                <div class="inner_light_Frame">
+                    <div class="inner_light_Title">실내등</div>
+
+                    <div class="inner_light_Ctrl_Area">
+                        <div class="inner_light_Ballimg_disp_area">
+                            <img src="lightball.png" class="lightball_brightness" />
+                        </div>
+                        <div class="inner_light_CtrlInfo_Area">
+
+
+                            <div id="lightball_state" class="lightball_state_text"></div>
+
+                            <div id="timer" class="timer_text_style"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+           
+        </div>
+        
+    </div>
+    
+</body>
+<!-- 시간제어(Timestamp_s.js)  로드 -->
+
+<script type="text/javascript" src="javascript\timestamp\Timestamp_s.js"></script>
+
+
+<!-- 날씨 수신 및 처리(Weather_svc.js)로드 -->
+<script type="text/javascript" src="javascript\weather\weather_svc.js"></script>
+
+
+<!-- 플랫폼 SW - IOT Device 간 중계서버 정보 -->
+<!-- IOT 제어 패널 구동 Javascript -->
+<!-- 지바스크립트 로딩 끝-->
+<!-- main.js 파일 로드 -->
+
+<script type="text/javascript" src="javascript\CtrlPan\light_Control.js"></script>
+<!--플랫폼 SW - IOT Device 제어 기능 코드 -->
+</html>

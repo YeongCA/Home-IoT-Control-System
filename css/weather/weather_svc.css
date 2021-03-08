@@ -1,0 +1,233 @@
+﻿@font-face {
+    font-family: 'MirrorFontL';
+    src: url('MirrorFontL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MirrorFontM';
+    src: url('MirrorFontM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.WtrWdgtArea {
+    width: 500px;
+    height: 600px;
+
+}
+
+.WtrLocationArea {
+    width: 560px;
+    height: 56px;
+    
+}
+
+.WtrLocationIcon {
+    width: 45px;
+    height: 60px;
+    float: left;
+    padding-top: 3px;
+}
+.WtrLocation {
+    width: 500px;
+    height: 60px;
+    float: left;
+    font-size: 30pt;
+    font-family: MirrorFontL;
+    color: rgb(255, 255, 255);
+    padding-top: 5px;
+}
+
+.WtrDivLine1 {
+    width: 500px;
+    height: 10px;
+}
+.WtrStateArea {
+    width: 400px;
+    height: 150px;
+    padding-left: 15px
+}
+
+.WtrCurrentTemp {
+    width: 210px;
+    height: 150px;
+    float: left;
+    font-size: 110pt;
+    font-family: MirrorFontM;
+    color: rgb(138, 213, 255);
+}
+.WtrCurIcon {
+    width: 175px;
+    height: 130px;
+    float: left;
+    padding-top: 20px;
+}
+.WtrDivLine2 {
+    width: 300px;
+    height: 20px;
+}
+
+.TodayWthInfoArea {
+    width: 150px;
+    height: 300px;
+    float: left;
+}
+
+.WthTemp {
+    width: 150px;
+    height: 30px;
+    font-family: MirrorFontL;
+    color: rgb(255,255,255);
+    text-align: center;
+    font-size: 30px;
+}
+
+.TodayWthInfo {
+    width: 150px;
+    height: 50px;
+    float: left;
+    font-size: 30pt;
+    font-family: MirrorFontL;
+    color: rgb(255,255,255);
+    text-align: center;
+}
+
+.TodayWthStates {
+    width: 150px;
+    height: 80px;
+    float: left;
+}
+
+.TodayWthMinIco {
+    width: 65px;
+    height: 50px;
+    float: left;
+}
+
+.Dash {
+    width: 20px;
+    height: 50px;
+    font-size: 33pt;
+    float: left;
+    font-family: MirrorFontL;
+    color: rgb(168, 168, 168);
+}
+
+.TodayWthMaxIco {
+    width: 65px;
+    height: 50px;
+    float: right;
+}
+
+.WthDivLine3 {
+    width: 300px;
+    height: 5px
+}
+
+.TomorrowWthInfoArea {
+    width: 150px;
+    height: 300px;
+    float: left;
+}
+
+.TomorrowWthInfo {
+    width: 150px;
+    height: 50px;
+    float: left;
+    font-size: 30pt;
+    font-family: MirrorFontL;
+    color: rgb(255,255,255);
+    text-align: center;
+}
+
+.TomorrowWthStates {
+    width: 150px;
+    height: 80px;
+    float: left;
+}
+
+.TomorrowWthMinIco {
+    width: 65px;
+    height: 50px;
+    float:left;
+}
+
+.TomorrowWthMaxIco {
+    width: 65px;
+    height: 50px;
+    float: right;
+}
+
+.WtrDivLine4 {
+    width: 500px;
+    height: 40px;
+}
+
+.WtrWndHmArea {
+    width: 368px;
+    height: 100px;
+    padding-left: 20px;
+}
+
+.WtrHmArea {
+    width: 125px;
+    height: 58px;
+    float: left;
+    padding-left: 5px;
+}
+
+.WtrHmIcon {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.WtrHmData {
+    width: 58px;
+    height: 50px;
+    float: inherit;
+    font-family: MirrorFontL;
+    font-size: 33pt;
+    color: rgb(255, 255, 255);
+}
+
+.WtrWndArea {
+    width:424px;
+    height: 50px;
+    
+}
+
+.WtrWndIcon {
+    width: 70px;
+    height: 50px;
+    float: left;
+}
+
+.WtrWndspd {
+    width: 81px;
+    height: 50px;
+    float: left;
+    font-family: MirrorFontL;
+    font-size: 33pt;
+    color: rgb(255, 255, 255)
+}
+
+.bar {
+    width: 20px;
+    height: 50px;
+    float: left;
+    font-family: MirrorFontL;
+    font-size: 33pt;
+    color: rgb(100,100,100);
+}
+
+.WtrWndict {
+    width: 80px;
+    height: 50px;
+    float: left;
+    font-family: MirrorFontL;
+    font-size: 33pt;
+    color: rgb(182, 255, 0);
+}

@@ -1,0 +1,53 @@
+﻿@font-face {
+    font-family: 'MirrorFontL';
+    src: url('MirrorFontL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MirrorFontM';
+    src: url('MirrorFontM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ClkDate {
+    width: 400px;
+    height: 60px;
+    font-size: 40pt;
+    font-family: MirrorFontL;
+    color: rgb(255, 255, 255);
+    float: right;
+    padding-top: 12px;
+}
+
+
+.ClkTime {
+    width: 500px;
+    height: 80px;
+    padding-left: 55px;
+}
+
+
+.ClkHhMm{
+    height:100px;
+    float:left;
+    font-size:60pt;
+    font-family:MirrorFontM;
+    font-weight:800;
+    color:rgb(255, 255, 255);
+    line-height:1;
+}
+
+.ClkAmPm {
+    width: 100px;
+    height: 70px;
+    float: left;
+    padding-top: 23px;
+    padding-left: 8px;
+    font-size: 40pt;
+    font-family: MirrorFontM;
+    color: rgb(181,181,181);
+    line-height: 1;
+}

@@ -1,0 +1,400 @@
+﻿@font-face {
+    font-family: 'MirrorFontL';
+    src: url('MirrorFontL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MirrorFontM';
+    src: url('MirrorFontM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.inAir_Quality_Pannel_Outline {
+    width: 750px;
+    height: 380px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    float: left;
+}
+
+.inAir_Quality_Pannel_Frame {
+    width: 750px;
+    height: 380px;
+
+}
+.inAir_Pannel_Title {
+    width: 750px;
+    height: 40px;
+    font-size: 30px;
+    font-family: MirrorFontL;
+    color: rgb(255,255,255);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.inner_Title {
+
+    width: 720px;
+    height: 30px;
+    padding-left: 30px;
+}
+
+.infactor {
+    width: 180px;
+    height: 30px;
+    float: left;
+    font-size: 17pt;
+    font-family: MirrorFontL;
+    color: rgb(236, 255, 70);
+    text-align: center;
+}
+
+.intmphumival {
+    width: 180px;
+    height: 40px;
+    float: left;
+    font-family: MirrorFontL;
+    font-size: 30px;
+    color: rgb(255,255,255);
+    text-align: center;
+}
+.inner_TempHumi_Block {
+    width: 360px;
+    height: 40px;
+    float:left;
+}
+
+.inner_Temp_ico {
+    width: 30px;
+    height: 40px;
+    float: left;
+}
+
+.inner_Temp_val {
+    width: 105px;
+    height: 40px;
+    float: left;
+    color: rgb(255,255,255);
+    font-size: 25px;
+    font-family: MirrorFontM;
+    line-height: 1.8;
+    padding-left: 10px;
+}
+
+.intemp_meter {
+    width: 40px;
+    height: 2px;
+    position: relative;
+    left: 75px;
+    top: 198px;
+    background-color: rgb(255, 0, 0);
+}
+.inner_Humi_ico {
+    width: 30px;
+    height: 40px;
+    float: left;
+}
+
+.inner_Humi_val {
+    width: 105px;
+    height: 40px;
+    float: left;
+    color: rgb(255,255,255);
+    font-size: 25px;
+    font-family: MirrorFontM;
+    line-height: 1.8;
+    padding-left: 10px;
+}
+
+.inhumi_meter {
+    width: 160px;
+    height: 190px;
+    float: left;
+    position: relative;
+    left: 12px;
+    background-color: black;
+}
+.inner_Air_Title {
+    color: rgb(111, 177, 216);
+    width: 294px;
+    height: 20px;
+    font-size: 19px;
+    font-family: MirrorFontM;
+    padding-left: 6px;
+}
+
+.inner_Air_Block {
+    width: 300px;
+    height: 50px;
+}
+
+.inner_Air_pm10_Str {
+    width: 145px;
+    height: 50px;
+    float: left;
+    color: rgb(179, 178, 178);
+    font-size: 38px;
+    text-align: center;
+    font-family: MirrorFontL;
+}
+
+.inner_Air_Str_divL {
+    width: 10px;
+    height: 50px;
+    float: left;
+    color: rgb(50, 50, 50);
+    font-size: 33px;
+}
+
+
+.inner_Air_pm25_Str {
+    width: 145px;
+    height: 50px;
+    float: left;
+    color: rgb(179, 178, 178);
+    font-size: 38px;
+    text-align: center;
+    font-family: MirrorFontL;
+}
+
+.inner_Air_pinArea {
+    width: 360px;
+    height: 200px;
+    float:right;
+    padding-top:30px;
+}
+
+.inner_Air_MeasurementPin_pm10 {
+    width: 168px;
+    height: 80px;
+    float: left;
+    padding-left: 12px;
+}
+
+.inner_Air_MeasurementPin_pm25 {
+    width: 165px;
+    height: 80px;
+    float: right;
+    padding-left: 15px;
+}
+.pm10_valueClr {
+    width: 180px;
+    height: 40px;
+    float: left;
+    color: rgb(255,255,255);
+    font-family: MirrorFontL;
+    font-size:30px;
+    text-align: center;
+}
+.pm25_valueClr {
+    width: 180px;
+    height: 40px;
+    float: left;
+    color: rgb(255,255,255);
+    font-family: MirrorFontL;
+    font-size: 30px;
+    text-align: center;
+}
+
+.pm10_descriptClr {
+    width: 180px;
+    height: 100px;
+    float: left;
+    font-family: MirrorFontL;
+    font-size: 30px;
+    color: rgb(255,255,255);
+    text-align:center;
+}
+
+.pm25_descriptClr {
+    width: 180px;
+    height: 100px;
+    float: right;
+    font-family: MirrorFontL;
+    font-size: 30px;
+    color: rgb(255,255,255);
+    text-align:center;
+}
+
+.pm10_pinpointer {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    z-index: 2;
+    left: 19.5px;
+    top: -64px;
+    transform:rotate(14deg);
+}
+
+.pm25_pinpointer {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    z-index: 2;
+    left: 19.5px;
+    top: -64px;
+    transform:rotate(14deg);
+}
+
+.inner_Air_val_Area {
+    width: 360px;
+    height: 32px;
+    float:left;
+    padding-top:8px;
+}
+
+
+inner_Air_descript_Area {
+    width: 300px;
+    height: 60px;
+}
+
+
+.inner_Air_BlankArea {
+    width: 300px;
+    height: 25px
+}
+
+.inner_light_Outline {
+    width: 550px;
+    height: 350px;
+    float: left;
+}
+.inner_light_Frame {
+    width: 550px;
+    height: 350px;
+
+}
+
+.inner_light_Title {
+    width: 200px;
+    height: 40px;
+    font-size: 30px;
+    font-family: MirrorFontL;
+    color: rgb(255,255,255);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.inner_light_BlankArea {
+    width: 420px;
+    height: 35px;
+}
+
+.inner_light_Ctrl_Area {
+    width: 550px;
+    height: 285px
+}
+
+.inner_light_Ballimg_disp_area {
+    width: 490px;
+    height: 285px;
+    float: left;
+}
+
+
+.lightball_brightness {
+   width:490px;
+   height:285px;
+   opacity : 0.2; /*default value*/
+}
+
+.inner_light_CtrlInfo_Area {
+    width: 228px;
+    height: 250px;
+    z-index: 2;
+    position: relative;
+    bottom: 240px;
+    left: 200px;
+}
+
+
+.inner_light_BlankArea2 {
+    width: 240px;
+    height: 30px;
+}
+
+
+.timer_icon{
+    width:70px;
+    height:70px;
+    opacity:0.1; /*default value*/
+}
+
+.lightball_state_text {
+    width: 240px;
+    height: 100px;
+    color: rgb(30,30,30);
+    font-size: 100px;
+    font-weight: 900;
+    font-family: MirrorFontM;
+    text-align: center;
+}
+/*
+.timer_text_style {
+    width: 240px;
+    height: 30px;
+    color: white;
+    font-size: 26px;
+    font-family: MirrorFontM;
+    padding-left: 20px;
+    font-weight: 900;
+    line-height: 2.3;
+}
+    */
+.timer_text_style {
+    width: 240px;
+    height: 100px;  
+    color: rgb(255,255,255);
+    font-size: 40px;
+    font-weight: 800;
+    font-family: MirrorFontL;
+    text-align:center;
+    position:relative;
+    top:100px;
+}
+
+.inner_light_Timer_ico {
+    width: 70px;
+    height: 70px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    float: left;
+}
+
+.inner_light_Timer_val {
+    width: 170px;
+    height: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
+.inner_light_BlankArea3 {
+    width: 240px;
+    height: 25px;
+}
+
+/*
+
+.aircon_power_sw {
+    width:300px;
+    height:300px;
+    padding-left:235px;
+    padding-right:31px;
+    opacity:0.1;       
+}
+
+.aircon_pwr_state_text {
+    width: 740px;
+    height: 90px;
+    color: rgb(30,30,30);
+    font-size: 70px;
+    font-family: MirrorFontL;
+    text-align: center;
+    font-weight:900;
+}
+*/

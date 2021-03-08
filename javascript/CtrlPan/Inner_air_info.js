@@ -1,0 +1,177 @@
+﻿
+var mqtt;
+var reconnectTimeout = 5000;
+var host = "broker.hivemq.com";
+var port = 8000;
+
+MQTTconnect(); // 시작 시 MQTT연결
+
+function MQTTconnect()
+{
+    // 서버연결 시도
+    console.log("connecting to " + host + " " + port);
+    mqtt = new Paho.MQTT.Client(host, port, "clientjs");
+    var options = {
+        timeout: 3,
+        onSuccess: onConnect,
+        onFailure: onFailure,
+    };
+    mqtt.onMessageArrived = onMessageArrived;
+    mqtt.connect(options);
+}
+function onFailure(message)
+{
+    // 서버연결 실패 시
+    console.log("Connection Attempt to Host " + host + "Failed");
+    setTimeout(MQTTconnect, reconnectTimeout);
+}
+
+function onConnect()
+{
+    // 서버연결 성공 시
+    console.log("Connected");
+    mqtt.subscribe("SM/Light");
+    mqtt.subscribe("SM/Temper");
+    mqtt.subscribe("SM/Humi");
+    mqtt.subscribe("SM/PM10");
+    mqtt.subscribe("SM/PM2");
+    message = new Paho.MQTT.Message("Mirro Connected!");
+    message.destinationName = "Start"; // 이거두면 초반부 메시지도착오류로 다른 토픽으로 출력
+    mqtt.send(message);
+    console.log("Send Start message");
+   
+
+    MQTT_Pub("SM/Light", "0"); // OFF 세팅
+}
+
+function onMessageArrived(msg)
+{
+    // 메시지 도착 시 실행
+    Temp_Message = msg.payloadString;
+    Temp_Topic = msg.destinationName;
+    out_msg = Temp_Topic + " <<- " + Temp_Message;
+    console.log(out_msg);
+    
+
+    if (Temp_Topic == "SM/Temper")
+    {
+        document.getElementById("SM/Temper").innerHTML = (Temp_Message);
+        var a = ((Temp_Message * 2) + 100) + "px";
+        var b = (200 - ((Temp_Message * 2) + 100)) + 'px';
+        document.getElementsByClassName('intemp_meter')[0].style.height = a;
+        document.getElementsByClassName('intemp_meter')[0].style.top = b;
+    }
+    else if (Temp_Topic == "SM/Humi")
+    {
+        document.getElementById("SM/Humi").innerHTML = (Temp_Message);
+        var c = (190 - (Temp_Message * 1.9)) +'px'
+        document.getElementsByClassName('inhumi_meter')[0].style.height = c;
+    }
+    else if (Temp_Topic == "SM/PM10")
+    {
+        document.getElementById("SM/PM10").innerHTML = Temp_Message;
+        var pm10_pin_deg = Temp_Message / 2;
+
+        if ((Temp_Message >= 0) && (Temp_Message <= 30))
+        {
+            $(".pm10_valueClr").css('color', 'rgb(90,174,255)');
+            $('.pm10_descriptClr').css('color', 'rgb(90,174,255)');
+            $("#PM10_description").html("매우 좋음");
+
+        }
+        else if ((Temp_Message >= 31) && (Temp_Message <= 60))
+        {
+            $('.pm10_valueClr').css('color', 'rgb(0,165,0)');
+            $(".pm10_descriptClr").css('color', 'rgb(0,165,0)');
+            $("#PM10_description").html("보통");
+        }
+        else if ((Temp_Message >= 61) && (Temp_Message <= 150))
+        {
+            $('.pm10_valueClr').css('color', 'rgb(255,148,54)');
+            $(".pm10_descriptClr").css('color', 'rgb(255,148,54)');
+            $("#PM10_description").html("나쁨");
+        }
+        else if (Temp_Message >= 151)
+        {
+            $('.pm10_valueClr').css('color', 'rgb(255,144,144)');
+            $(".pm10_descriptClr").css('color', 'rgb(255,144,144)');
+            $("#PM10_description").html("매우 나쁨");
+        }
+        else
+        {
+            $('.pm10_valueClr').css('color', 'rgb(255,255,255)');
+            $(".pm10_descriptClr").css('color', 'rgb(255,255,255)');
+            $("#PM10_description").html("N/A");
+            $("#SM/PM10").html("N/A");
+        }
+
+
+        $(".pm10_pinpointer").css('transform', 'rotate(' + pm10_pin_deg + 'deg)');
+        if (Temp_Message > 330)
+        {
+            $(".pm10_pinpointer").css('transform', 'rotate(165deg)');
+        }
+     }
+    else if (Temp_Topic == "SM/PM2")
+    {
+        document.getElementById("SM/PM2").innerHTML = Temp_Message;
+          
+
+        var pm25_pin_deg = Temp_Message * 2;
+
+        
+        if ((Temp_Message >= 0) && (Temp_Message <= 15))
+        {
+            $(".pm25_valueClr").css('color', 'rgb(90,174,255)');
+            $('.pm25_descriptClr').css('color', 'rgb(90,174,255)');
+            $("#PM25_description").html("매우 좋음");
+        }
+        else if ((Temp_Message >= 16) && (Temp_Message <= 35))
+        {
+            $('.pm25_valueClr').css('color', 'rgb(0,165,0)');
+            $(".pm25_descriptClr").css('color', 'rgb(0,165,0)');
+            $("#PM25_description").html("보통");
+        }
+        else if ((Temp_Message >= 36) && (Temp_Message <= 75))
+        {
+            $('.pm25_valueClr').css('color', 'rgb(255,148,54)');
+            $(".pm25_descriptClr").css('color', 'rgb(255,148,54)');
+            $("#PM25_description").html("나쁨");
+        }
+        else if (Temp_Message >= 76)
+        {
+            $('.pm25_valueClr').css('color', 'rgb(255,144,144)');
+            $(".pm25_descriptClr").css('color', 'rgb(255,144,144)');
+            $("#PM25_description").html("매우 나쁨");
+        }
+        else
+        {
+            $('.pm25_valueClr').css('color', 'rgb(255,255,255)');
+            $(".pm25_descriptClr").css('color', 'rgb(255,255,255)');
+            $("#PM25_description").html("N/A");
+            $("#SM/PM2").html("N/A");
+        }
+
+        $(".pm25_pinpointer").css('transform', 'rotate(' + pm25_pin_deg + 'deg)');
+        if (Temp_Message > 82)
+        {
+            $(".pm25_pinpointer").css('transform', 'rotate(164deg)');
+        }
+    }
+}
+
+function MQTT_Pub(topic, input)
+{
+    // 메시지발송
+    message = new Paho.MQTT.Message(input);
+    message.destinationName = topic;
+    mqtt.send(message);
+    console.log(topic + " ->> " + input);
+}
+function MQTT_Sub(topic)
+{
+    // 메시지구독
+    mqtt.subscribe(topic);
+    console.log("Subscribe: " + topic);
+}
+
