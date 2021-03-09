@@ -1,11 +1,3 @@
-/*	2019 Capstone design project
-*
-*	Work name : IoT based Smart Display I-mirror Main software flatform
-*	
-*	Work language : Javascript
-*	Developer : 전자과 201626014 차영후
-*
-*	Copyright(C) 2019 '9조 불사조'  All right reserved 					*/
 
 clock();
 
